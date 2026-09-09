@@ -3,954 +3,1068 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Espacio Semántico</title>
+<title>Espacio Semántico</title>
 
 
-    <style>
+<style>
 
-        /* ================================
-           CONFIGURACIÓN GENERAL
-        ================================= */
+/* =========================================
+   GENERAL
+========================================= */
 
-        * {
-            box-sizing: border-box;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f6f9;
-            color: #1f2937;
-        }
+body {
+    margin: 0;
 
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-        /* ================================
-           ENCABEZADO
-        ================================= */
+    background: #f4f6f9;
 
-        header {
-            background: white;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 18px 35px;
-        }
+    color: #1f2937;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 23px;
-            font-weight: 600;
-        }
 
-        header p {
-            margin: 5px 0 0;
-            color: #6b7280;
-            font-size: 13px;
-        }
+/* =========================================
+   ENCABEZADO
+========================================= */
 
+header {
 
-        /* ================================
-           CONTENEDOR PRINCIPAL
-        ================================= */
+    background: white;
 
-        .container {
-            display: flex;
-            gap: 25px;
+    border-bottom:
+        1px solid #e5e7eb;
 
-            max-width: 1250px;
-            margin: 0 auto;
+    padding:
+        18px 35px;
+}
 
-            padding: 25px 30px;
-        }
+header h1 {
 
+    margin: 0;
 
-        /* ================================
-           PANEL LATERAL
-        ================================= */
+    font-size: 23px;
 
-        .sidebar {
-            width: 250px;
-            flex-shrink: 0;
+    font-weight: 600;
+}
 
-            background: white;
-            border-radius: 12px;
+header p {
 
-            padding: 22px;
+    margin:
+        5px 0 0;
 
-            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    color: #6b7280;
 
-            height: fit-content;
-        }
+    font-size: 13px;
+}
 
-        .sidebar h2 {
-            margin: 0 0 8px;
-            font-size: 17px;
-        }
 
-        .sidebar p {
-            margin: 0;
-            color: #6b7280;
-            font-size: 13px;
-            line-height: 1.5;
-        }
+/* =========================================
+   CONTENEDOR PRINCIPAL
+========================================= */
 
+.container {
 
-        /* ================================
-           INPUT
-        ================================= */
+    display: flex;
 
-        .input-group {
-            display: flex;
-            margin-top: 18px;
-        }
+    gap: 25px;
 
-        input {
-            width: 100%;
+    max-width: 1250px;
 
-            padding: 10px;
+    margin:
+        0 auto;
 
-            border: 1px solid #d1d5db;
-            border-radius: 7px 0 0 7px;
+    padding:
+        25px 30px;
+}
 
-            outline: none;
 
-            font-size: 13px;
-        }
+/* =========================================
+   PANEL LATERAL
+========================================= */
 
-        input:focus {
-            border-color: #2563eb;
-        }
+.sidebar {
 
-        .add-button {
-            border: none;
+    width: 250px;
 
-            background: #2563eb;
-            color: white;
+    flex-shrink: 0;
 
-            padding: 0 14px;
+    background: white;
 
-            border-radius: 0 7px 7px 0;
+    border-radius: 12px;
 
-            cursor: pointer;
+    padding: 22px;
 
-            font-size: 18px;
-        }
+    box-shadow:
+        0 3px 12px rgba(0,0,0,0.06);
 
-        .add-button:hover {
-            background: #1d4ed8;
-        }
+    height: fit-content;
+}
 
+.sidebar h2 {
 
-        /* ================================
-           LISTA DE PALABRAS
-        ================================= */
+    margin:
+        0 0 8px;
 
-        .word-list {
-            margin-top: 22px;
-        }
+    font-size: 17px;
+}
 
-        .word-list h3 {
-            margin: 0 0 8px;
+.sidebar p {
 
-            font-size: 12px;
+    margin: 0;
 
-            color: #6b7280;
+    color: #6b7280;
 
-            font-weight: 500;
+    font-size: 13px;
 
-            text-transform: uppercase;
-        }
+    line-height: 1.5;
+}
 
-        .word-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
 
-            padding: 8px 0;
+/* =========================================
+   INPUT
+========================================= */
 
-            border-bottom: 1px solid #f0f0f0;
+.input-group {
 
-            font-size: 13px;
-        }
+    display: flex;
 
-        .delete-button {
-            border: none;
-            background: transparent;
+    margin-top: 18px;
+}
 
-            color: #ef4444;
+input {
 
-            cursor: pointer;
+    width: 100%;
 
-            font-size: 17px;
+    padding: 10px;
 
-            padding: 0 4px;
-        }
+    border:
+        1px solid #d1d5db;
 
-        .delete-button:hover {
-            color: #b91c1c;
-        }
+    border-radius:
+        7px 0 0 7px;
 
+    outline: none;
 
-        /* ================================
-           CONTENEDOR DEL GRÁFICO
-        ================================= */
+    font-size: 13px;
+}
 
-        .chart-container {
-            flex: 1;
+input:focus {
 
-            background: white;
+    border-color:
+        #2563eb;
+}
 
-            border-radius: 12px;
+.add-button {
 
-            padding: 22px 25px;
+    border: none;
 
-            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    background:
+        #2563eb;
 
-            min-width: 0;
-        }
+    color: white;
 
-        .chart-container h2 {
-            margin: 0;
+    padding:
+        0 14px;
 
-            font-size: 18px;
-        }
+    border-radius:
+        0 7px 7px 0;
 
+    cursor: pointer;
 
-        /* ================================
-           ÁREA QUE CONTIENE EL EJE Y + GRÁFICO
-        ================================= */
+    font-size: 18px;
+}
 
-        .chart-wrapper {
-            display: flex;
+.add-button:hover {
 
-            align-items: center;
+    background:
+        #1d4ed8;
+}
 
-            margin-top: 25px;
-        }
 
+/* =========================================
+   LISTA DE PALABRAS
+========================================= */
 
-        /* ================================
-           NOMBRE DEL EJE Y
-        ================================= */
+.word-list {
 
-        .y-label {
-            width: 35px;
+    margin-top: 22px;
+}
 
-            flex-shrink: 0;
+.word-list h3 {
 
-            writing-mode: vertical-rl;
+    margin:
+        0 0 8px;
 
-            transform: rotate(180deg);
+    font-size: 12px;
 
-            text-align: center;
+    color: #6b7280;
 
-            font-size: 14px;
+    font-weight: 500;
 
-            font-weight: 600;
+    text-transform: uppercase;
+}
 
-            color: #374151;
-        }
+.word-item {
 
+    display: flex;
 
-        /* ================================
-           GRÁFICO
-        ================================= */
+    justify-content:
+        space-between;
 
-        .chart {
-            position: relative;
+    align-items:
+        center;
 
-            width: 100%;
+    padding:
+        8px 0;
 
-            /*
-               ALTURA DEL GRÁFICO
-               ==================
-               Si querés hacerlo todavía
-               más bajo, cambiá 280px por
-               250px, por ejemplo.
-            */
+    border-bottom:
+        1px solid #f0f0f0;
 
-            height: 280px;
+    font-size: 13px;
+}
 
-            margin-left: 5px;
+.delete-button {
 
-            margin-right: 15px;
+    border: none;
 
-            border-left: 2px solid #374151;
+    background:
+        transparent;
 
-            border-bottom: 2px solid #374151;
+    color:
+        #ef4444;
 
-            background:
-                linear-gradient(
-                    to right,
-                    #f0f2f5 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    to bottom,
-                    #f0f2f5 1px,
-                    transparent 1px
-                );
+    cursor: pointer;
 
-            background-size: 10% 10%;
+    font-size: 17px;
 
-            overflow: hidden;
-        }
+    padding:
+        0 4px;
+}
 
+.delete-button:hover {
 
-        /* ================================
-           NOMBRE DEL EJE X
-        ================================= */
+    color:
+        #b91c1c;
+}
 
-        .x-label {
-            text-align: center;
 
-            margin-top: 10px;
+/* =========================================
+   CONTENEDOR DEL GRÁFICO
+========================================= */
 
-            font-size: 14px;
+.chart-container {
 
-            font-weight: 600;
+    flex: 1;
 
-            color: #374151;
-        }
+    background: white;
 
+    border-radius: 12px;
 
-        /* ================================
-           FLECHA EJE Y
-        ================================= */
+    padding:
+        22px 25px;
 
-        .arrow-y {
-            position: absolute;
+    box-shadow:
+        0 3px 12px rgba(0,0,0,0.06);
 
-            left: -9px;
+    min-width: 0;
+}
 
-            top: -13px;
+.chart-container h2 {
 
-            font-size: 16px;
-        }
+    margin: 0;
 
+    font-size: 18px;
+}
 
-        /* ================================
-           FLECHA EJE X
-        ================================= */
 
-        .arrow-x {
-            position: absolute;
+/* =========================================
+   ÁREA DEL EJE Y + GRÁFICO
+========================================= */
 
-            right: -8px;
+.chart-wrapper {
 
-            bottom: -8px;
+    display: flex;
 
-            font-size: 16px;
-        }
+    align-items: center;
 
+    margin-top: 25px;
 
-        /* ================================
-           PALABRAS
-        ================================= */
+    /*
+       Dejamos espacio suficiente
+       para la etiqueta Tamaño.
+    */
 
-        .word {
-            position: absolute;
+    padding-left: 5px;
+}
 
-            padding: 9px 15px;
 
-            background: white;
+/* =========================================
+   ETIQUETA EJE Y
+========================================= */
 
-            border: 2px solid #2563eb;
+.y-label {
 
-            border-radius: 8px;
+    width: 35px;
 
-            color: #1e3a8a;
+    flex-shrink: 0;
 
-            font-weight: 600;
+    writing-mode:
+        vertical-rl;
 
-            font-size: 14px;
+    transform:
+        rotate(180deg);
 
-            cursor: grab;
+    text-align: center;
 
-            user-select: none;
+    font-size: 14px;
 
-            transform: translate(-50%, -50%);
+    font-weight: 600;
 
-            box-shadow:
-                0 3px 8px rgba(37,99,235,0.15);
-        }
+    color: #374151;
+}
 
-        .word:hover {
-            transform:
-                translate(-50%, -50%)
-                scale(1.05);
 
-            box-shadow:
-                0 5px 14px rgba(37,99,235,0.25);
-        }
+/* =========================================
+   GRÁFICO
+========================================= */
 
-        .word:active {
-            cursor: grabbing;
-        }
+.chart {
 
+    position: relative;
 
-        /* ================================
-           INSTRUCCIONES
-        ================================= */
+    width: 100%;
 
-        .instructions {
-            margin-top: 12px;
+    height: 280px;
 
-            text-align: center;
+    margin-left: 5px;
 
-            color: #9ca3af;
+    margin-right: 15px;
 
-            font-size: 12px;
-        }
+    border-left:
+        2px solid #374151;
 
+    border-bottom:
+        2px solid #374151;
 
-        /* ================================
-           PANTALLAS CHICAS
-        ================================= */
+    background:
 
-        @media (max-width: 800px) {
+        linear-gradient(
+            to right,
+            #f0f2f5 1px,
+            transparent 1px
+        ),
 
-            .container {
-                flex-direction: column;
+        linear-gradient(
+            to bottom,
+            #f0f2f5 1px,
+            transparent 1px
+        );
 
-                padding: 20px;
-            }
+    background-size:
+        10% 10%;
 
-            .sidebar {
-                width: 100%;
-            }
+    /*
+       Importante:
+       hidden evita que las palabras
+       se salgan del gráfico.
+    */
 
-            .chart-container {
-                width: 100%;
-            }
+    overflow: hidden;
+}
 
-            .chart {
-                height: 260px;
-            }
 
-        }
+/* =========================================
+   PUNTA DEL EJE Y
+========================================= */
 
-    </style>
+.chart::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -6px;
+
+    top: -9px;
+
+    width: 0;
+
+    height: 0;
+
+    border-left:
+        5px solid transparent;
+
+    border-right:
+        5px solid transparent;
+
+    border-bottom:
+        8px solid #374151;
+}
+
+
+/* =========================================
+   PUNTA DEL EJE X
+========================================= */
+
+.chart::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: -9px;
+
+    bottom: -6px;
+
+    width: 0;
+
+    height: 0;
+
+    border-top:
+        5px solid transparent;
+
+    border-bottom:
+        5px solid transparent;
+
+    border-left:
+        8px solid #374151;
+}
+
+
+/* =========================================
+   ETIQUETA EJE X
+========================================= */
+
+.x-label {
+
+    text-align: center;
+
+    margin-top: 10px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #374151;
+}
+
+
+/* =========================================
+   PALABRAS
+========================================= */
+
+.word {
+
+    position: absolute;
+
+    padding:
+        9px 15px;
+
+    background:
+        white;
+
+    border:
+        2px solid #2563eb;
+
+    border-radius:
+        8px;
+
+    color:
+        #1e3a8a;
+
+    font-weight: 600;
+
+    font-size: 14px;
+
+    cursor: grab;
+
+    user-select: none;
+
+    transform:
+        translate(-50%, -50%);
+
+    box-shadow:
+        0 3px 8px
+        rgba(37,99,235,0.15);
+}
+
+.word:hover {
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.05);
+
+    box-shadow:
+        0 5px 14px
+        rgba(37,99,235,0.25);
+}
+
+.word:active {
+
+    cursor:
+        grabbing;
+}
+
+
+/* =========================================
+   INSTRUCCIONES
+========================================= */
+
+.instructions {
+
+    margin-top: 12px;
+
+    text-align: center;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   PANTALLAS PEQUEÑAS
+========================================= */
+
+@media (max-width: 800px) {
+
+    .container {
+
+        flex-direction: column;
+
+        padding: 20px;
+    }
+
+    .sidebar {
+
+        width: 100%;
+    }
+
+    .chart-container {
+
+        width: 100%;
+    }
+
+    .chart {
+
+        height: 260px;
+    }
+
+}
+
+</style>
 
 </head>
-
 
 
 <body>
 
 
+<!-- =====================================
+     ENCABEZADO
+===================================== -->
+
+<header>
+
+    <h1>
+        Espacio Semántico
+    </h1>
+
+    <p>
+        Ubicá las palabras según su posición en las dimensiones de humanidad y tamaño.
+    </p>
+
+</header>
+
+
+
+<!-- =====================================
+     CONTENEDOR
+===================================== -->
+
+<div class="container">
+
+
     <!-- =================================
-         ENCABEZADO
+         PANEL LATERAL
     ================================== -->
 
-    <header>
+    <aside class="sidebar">
 
-        <h1>
-            Espacio Semántico
-        </h1>
+        <h2>
+            Agregar palabras
+        </h2>
 
         <p>
-            Ubicá las palabras según su posición en las dimensiones de humanidad y tamaño.
+            Escribí una palabra y agregala al espacio semántico.
         </p>
 
-    </header>
+
+        <div class="input-group">
+
+            <input
+                type="text"
+                id="newWord"
+                placeholder="Nueva palabra..."
+                maxlength="30"
+            >
+
+            <button
+                class="add-button"
+                onclick="addWord()"
+            >
+                +
+            </button>
+
+        </div>
+
+
+        <div class="word-list">
+
+            <h3>
+                Palabras
+            </h3>
+
+            <div id="wordList"></div>
+
+        </div>
+
+    </aside>
 
 
 
     <!-- =================================
-         CONTENEDOR PRINCIPAL
+         GRÁFICO
     ================================== -->
 
-    <div class="container">
+    <main class="chart-container">
+
+        <h2>
+            Mapa conceptual
+        </h2>
 
 
-        <!-- =================================
-             PANEL LATERAL
-        ================================== -->
-
-        <aside class="sidebar">
-
-            <h2>
-                Agregar palabras
-            </h2>
-
-            <p>
-                Escribí una palabra y agregala al espacio semántico.
-            </p>
+        <div class="chart-wrapper">
 
 
-            <div class="input-group">
+            <!-- EJE Y -->
 
-                <input
-                    type="text"
-                    id="newWord"
-                    placeholder="Nueva palabra..."
-                    maxlength="30"
-                >
-
-                <button
-                    class="add-button"
-                    onclick="addWord()"
-                >
-                    +
-                </button>
-
+            <div class="y-label">
+                Tamaño
             </div>
 
 
-            <div class="word-list">
+            <!-- ÁREA DEL GRÁFICO -->
 
-                <h3>
-                    Palabras
-                </h3>
-
-                <div id="wordList"></div>
-
-            </div>
-
-        </aside>
-
-
-
-        <!-- =================================
-             GRÁFICO
-        ================================== -->
-
-        <main class="chart-container">
-
-            <h2>
-                Mapa conceptual
-            </h2>
-
-
-            <!--
-                Este contenedor incluye:
-                - nombre del eje Y
-                - gráfico
-            -->
-
-            <div class="chart-wrapper">
-
-
-                <!-- NOMBRE DEL EJE Y -->
-
-                <div class="y-label">
-                    Tamaño
-                </div>
-
-
-                <!-- GRÁFICO -->
-
-                <div
-                    id="chart"
-                    class="chart"
-                >
-
-                    <!-- FLECHA EJE Y -->
-
-                    <div class="arrow-y">
-                        ▲
-                    </div>
-
-
-                    <!-- FLECHA EJE X -->
-
-                    <div class="arrow-x">
-                        ▶
-                    </div>
-
-                </div>
+            <div
+                id="chart"
+                class="chart"
+            >
 
             </div>
 
+        </div>
 
-            <!-- NOMBRE DEL EJE X -->
 
-            <div class="x-label">
-                Humanidad
-            </div>
+        <!-- EJE X -->
 
+        <div class="x-label">
+            Humanidad
+        </div>
 
-            <div class="instructions">
-                Arrastrá las palabras para ubicarlas dentro del espacio.
-            </div>
 
-        </main>
+        <div class="instructions">
 
-    </div>
+            Arrastrá las palabras para ubicarlas
+            dentro del espacio.
 
+        </div>
 
+    </main>
 
-    <!-- =================================
-         JAVASCRIPT
-    ================================== -->
+</div>
 
-    <script>
 
 
-        /* ================================
-           ELEMENTOS
-        ================================= */
+<script>
 
-        const chart =
-            document.getElementById("chart");
 
-        const wordList =
-            document.getElementById("wordList");
+/* =====================================
+   ELEMENTOS
+===================================== */
 
-        const input =
-            document.getElementById("newWord");
+const chart =
+    document.getElementById("chart");
 
+const wordList =
+    document.getElementById("wordList");
 
-        /* ================================
-           PALABRAS INICIALES
-        ================================= */
+const input =
+    document.getElementById("newWord");
 
-        let words = [
 
-            {
-                text: "Perro",
-                x: 30,
-                y: 65
-            },
+/* =====================================
+   PALABRAS INICIALES
+===================================== */
 
-            {
-                text: "Gato",
-                x: 55,
-                y: 50
-            },
+let words = [
 
-            {
-                text: "Rey",
-                x: 75,
-                y: 25
-            }
+    {
+        text: "Perro",
+        x: 30,
+        y: 65
+    },
 
-        ];
+    {
+        text: "Gato",
+        x: 55,
+        y: 50
+    },
 
+    {
+        text: "Rey",
+        x: 75,
+        y: 25
+    }
 
-        /* ================================
-           DIBUJAR LAS PALABRAS
-        ================================= */
+];
 
-        function renderWords() {
 
-            /*
-               Borrar las palabras que
-               ya están dibujadas.
-            */
+/* =====================================
+   DIBUJAR PALABRAS
+===================================== */
 
-            chart
-                .querySelectorAll(".word")
-                .forEach(
-                    element => element.remove()
-                );
+function renderWords() {
 
+    /*
+       Eliminar las palabras anteriores.
+    */
 
-            /*
-               Vaciar la lista lateral.
-            */
-
-            wordList.innerHTML = "";
-
-
-            /*
-               Dibujar cada palabra.
-            */
-
-            words.forEach(
-                (word, index) => {
-
-
-                    /* PALABRA EN EL GRÁFICO */
-
-                    const element =
-                        document.createElement("div");
-
-                    element.className = "word";
-
-                    element.textContent =
-                        word.text;
-
-
-                    element.style.left =
-                        word.x + "%";
-
-                    element.style.top =
-                        word.y + "%";
-
-
-                    makeDraggable(
-                        element,
-                        index
-                    );
-
-
-                    chart.appendChild(
-                        element
-                    );
-
-
-                    /* PALABRA EN LA LISTA */
-
-                    const listItem =
-                        document.createElement("div");
-
-                    listItem.className =
-                        "word-item";
-
-
-                    const name =
-                        document.createElement("span");
-
-                    name.textContent =
-                        word.text;
-
-
-                    const deleteButton =
-                        document.createElement("button");
-
-                    deleteButton.className =
-                        "delete-button";
-
-                    deleteButton.textContent =
-                        "×";
-
-
-                    deleteButton.onclick =
-                        function() {
-
-                            deleteWord(index);
-
-                        };
-
-
-                    listItem.appendChild(name);
-
-                    listItem.appendChild(
-                        deleteButton
-                    );
-
-                    wordList.appendChild(
-                        listItem
-                    );
-
-                }
-            );
-
-        }
-
-
-        /* ================================
-           ARRASTRAR PALABRAS
-        ================================= */
-
-        function makeDraggable(
-            element,
-            index
-        ) {
-
-            let dragging = false;
-
-
-            /*
-               Comenzar a arrastrar.
-            */
-
-            element.addEventListener(
-                "mousedown",
-                function() {
-
-                    dragging = true;
-
-                    document.body.style.userSelect =
-                        "none";
-
-                }
-            );
-
-
-            /*
-               Mover la palabra.
-            */
-
-            document.addEventListener(
-                "mousemove",
-                function(event) {
-
-                    if (!dragging) return;
-
-
-                    const rect =
-                        chart.getBoundingClientRect();
-
-
-                    let x =
-                        event.clientX -
-                        rect.left;
-
-
-                    let y =
-                        event.clientY -
-                        rect.top;
-
-
-                    /*
-                       Mantener la palabra
-                       dentro del gráfico.
-                    */
-
-                    x = Math.max(
-                        0,
-                        Math.min(
-                            x,
-                            rect.width
-                        )
-                    );
-
-
-                    y = Math.max(
-                        0,
-                        Math.min(
-                            y,
-                            rect.height
-                        )
-                    );
-
-
-                    /*
-                       Convertir a porcentaje.
-                    */
-
-                    const xPercent =
-                        (x / rect.width) * 100;
-
-                    const yPercent =
-                        (y / rect.height) * 100;
-
-
-                    /*
-                       Guardar posición.
-                    */
-
-                    words[index].x =
-                        xPercent;
-
-                    words[index].y =
-                        yPercent;
-
-
-                    /*
-                       Actualizar posición
-                       visualmente.
-                    */
-
-                    element.style.left =
-                        xPercent + "%";
-
-                    element.style.top =
-                        yPercent + "%";
-
-                }
-            );
-
-
-            /*
-               Terminar de arrastrar.
-            */
-
-            document.addEventListener(
-                "mouseup",
-                function() {
-
-                    dragging = false;
-
-                    document.body.style.userSelect =
-                        "";
-
-                }
-            );
-
-        }
-
-
-        /* ================================
-           AGREGAR PALABRA
-        ================================= */
-
-        function addWord() {
-
-            const text =
-                input.value.trim();
-
-
-            if (text === "") {
-                return;
-            }
-
-
-            words.push({
-
-                text: text,
-
-                x: 50,
-
-                y: 50
-
-            });
-
-
-            input.value = "";
-
-
-            renderWords();
-
-        }
-
-
-        /* ================================
-           ELIMINAR PALABRA
-        ================================= */
-
-        function deleteWord(index) {
-
-            words.splice(
-                index,
-                1
-            );
-
-
-            renderWords();
-
-        }
-
-
-        /* ================================
-           ENTER PARA AGREGAR
-        ================================= */
-
-        input.addEventListener(
-            "keypress",
-            function(event) {
-
-                if (event.key === "Enter") {
-
-                    addWord();
-
-                }
-
-            }
+    chart
+        .querySelectorAll(".word")
+        .forEach(
+            element =>
+                element.remove()
         );
 
 
-        /* ================================
-           INICIALIZAR
-        ================================= */
+    /*
+       Vaciar lista lateral.
+    */
 
-        renderWords();
+    wordList.innerHTML = "";
 
-    </script>
+
+    /*
+       Crear cada palabra.
+    */
+
+    words.forEach(
+        (word, index) => {
+
+
+            /* -------------------------
+               PALABRA EN EL GRÁFICO
+            ------------------------- */
+
+            const element =
+                document.createElement("div");
+
+            element.className =
+                "word";
+
+            element.textContent =
+                word.text;
+
+
+            element.style.left =
+                word.x + "%";
+
+            element.style.top =
+                word.y + "%";
+
+
+            makeDraggable(
+                element,
+                index
+            );
+
+
+            chart.appendChild(
+                element
+            );
+
+
+            /* -------------------------
+               PALABRA EN LA LISTA
+            ------------------------- */
+
+            const listItem =
+                document.createElement("div");
+
+            listItem.className =
+                "word-item";
+
+
+            const name =
+                document.createElement("span");
+
+            name.textContent =
+                word.text;
+
+
+            const deleteButton =
+                document.createElement("button");
+
+            deleteButton.className =
+                "delete-button";
+
+            deleteButton.textContent =
+                "×";
+
+
+            deleteButton.onclick =
+                function() {
+
+                    deleteWord(index);
+
+                };
+
+
+            listItem.appendChild(
+                name
+            );
+
+            listItem.appendChild(
+                deleteButton
+            );
+
+
+            wordList.appendChild(
+                listItem
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================
+   ARRASTRAR PALABRAS
+===================================== */
+
+function makeDraggable(
+    element,
+    index
+) {
+
+    let dragging = false;
+
+
+    /* Comenzar */
+
+    element.addEventListener(
+        "mousedown",
+        function() {
+
+            dragging = true;
+
+            document.body.style.userSelect =
+                "none";
+
+        }
+    );
+
+
+    /* Mover */
+
+    document.addEventListener(
+        "mousemove",
+        function(event) {
+
+            if (!dragging) return;
+
+
+            const rect =
+                chart.getBoundingClientRect();
+
+
+            let x =
+                event.clientX -
+                rect.left;
+
+
+            let y =
+                event.clientY -
+                rect.top;
+
+
+            /*
+               Mantener dentro
+               del gráfico.
+            */
+
+            x = Math.max(
+                0,
+                Math.min(
+                    x,
+                    rect.width
+                )
+            );
+
+
+            y = Math.max(
+                0,
+                Math.min(
+                    y,
+                    rect.height
+                )
+            );
+
+
+            /*
+               Convertir a porcentaje.
+            */
+
+            const xPercent =
+                (x / rect.width) * 100;
+
+
+            const yPercent =
+                (y / rect.height) * 100;
+
+
+            /*
+               Guardar posición.
+            */
+
+            words[index].x =
+                xPercent;
+
+            words[index].y =
+                yPercent;
+
+
+            /*
+               Mover visualmente.
+            */
+
+            element.style.left =
+                xPercent + "%";
+
+            element.style.top =
+                yPercent + "%";
+
+        }
+    );
+
+
+    /* Terminar */
+
+    document.addEventListener(
+        "mouseup",
+        function() {
+
+            dragging = false;
+
+            document.body.style.userSelect =
+                "";
+
+        }
+    );
+
+}
+
+
+/* =====================================
+   AGREGAR PALABRA
+===================================== */
+
+function addWord() {
+
+    const text =
+        input.value.trim();
+
+
+    if (text === "") {
+
+        return;
+
+    }
+
+
+    words.push({
+
+        text: text,
+
+        x: 50,
+
+        y: 50
+
+    });
+
+
+    input.value = "";
+
+
+    renderWords();
+
+}
+
+
+/* =====================================
+   ELIMINAR PALABRA
+===================================== */
+
+function deleteWord(index) {
+
+    words.splice(
+        index,
+        1
+    );
+
+
+    renderWords();
+
+}
+
+
+/* =====================================
+   ENTER PARA AGREGAR
+===================================== */
+
+input.addEventListener(
+    "keypress",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            addWord();
+
+        }
+
+    }
+);
+
+
+/* =====================================
+   INICIAR
+===================================== */
+
+renderWords();
+
+</script>
 
 
 </body>
