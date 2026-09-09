@@ -7,275 +7,444 @@
 <title>Espacio Semántico</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-    }
 
-    body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: #f4f6f9;
-        color: #1f2937;
-    }
+/* =========================
+   CONFIGURACIÓN GENERAL
+   ========================= */
 
-    header {
-        background: white;
-        border-bottom: 1px solid #e5e7eb;
-        padding: 22px 40px;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    header h1 {
-        margin: 0;
-        font-size: 24px;
-        font-weight: 600;
-    }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    color: #1f2937;
+}
 
-    header p {
-        margin: 6px 0 0;
-        color: #6b7280;
-        font-size: 14px;
-    }
+
+/* =========================
+   ENCABEZADO
+   ========================= */
+
+header {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 18px 35px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+header p {
+    margin: 5px 0 0;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+
+/* =========================
+   CONTENEDOR PRINCIPAL
+   ========================= */
 
 .container {
     display: flex;
-    height: calc(100vh - 100px);
-    padding: 25px 35px;
-    gap: 30px;
-    max-width: 1400px;
-    margin: auto;
+    gap: 25px;
+
+    max-width: 1250px;
+    margin: 0 auto;
+
+    padding: 25px 30px;
 }
 
-    /* PANEL LATERAL */
 
-    .sidebar {
-        width: 280px;
-        background: white;
-        border-radius: 12px;
-        padding: 25px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-        height: fit-content;
-    }
+/* =========================
+   PANEL LATERAL
+   ========================= */
 
-    .sidebar h2 {
-        margin-top: 0;
-        font-size: 18px;
-    }
+.sidebar {
+    width: 250px;
+    flex-shrink: 0;
 
-    .sidebar p {
-        font-size: 14px;
-        color: #6b7280;
-        line-height: 1.5;
-    }
+    background: white;
+    border-radius: 12px;
 
-    .input-group {
-        display: flex;
-        margin-top: 20px;
-    }
+    padding: 22px;
 
-    input {
-        width: 100%;
-        padding: 11px;
-        border: 1px solid #d1d5db;
-        border-radius: 7px 0 0 7px;
-        outline: none;
-        font-size: 14px;
-    }
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
 
-    input:focus {
-        border-color: #2563eb;
-    }
+    height: fit-content;
+}
 
-    button {
-        border: none;
-        background: #2563eb;
-        color: white;
-        padding: 0 15px;
-        border-radius: 0 7px 7px 0;
-        cursor: pointer;
-        font-size: 16px;
-    }
+.sidebar h2 {
+    margin: 0 0 8px;
+    font-size: 17px;
+}
 
-    button:hover {
-        background: #1d4ed8;
-    }
-
-    .word-list {
-        margin-top: 25px;
-    }
-
-    .word-list h3 {
-        font-size: 14px;
-        color: #6b7280;
-        font-weight: 500;
-    }
-
-    .word-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 9px 0;
-        border-bottom: 1px solid #f0f0f0;
-        font-size: 14px;
-    }
-
-    .delete-btn {
-        background: transparent;
-        color: #ef4444;
-        font-size: 18px;
-        padding: 0 5px;
-    }
-
-    .delete-btn:hover {
-        background: transparent;
-        color: #b91c1c;
-    }
+.sidebar p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.5;
+}
 
 
-    /* GRAFICO */
+/* =========================
+   INPUT
+   ========================= */
+
+.input-group {
+    display: flex;
+    margin-top: 18px;
+}
+
+input {
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 7px 0 0 7px;
+
+    outline: none;
+
+    font-size: 13px;
+}
+
+input:focus {
+    border-color: #2563eb;
+}
+
+.add-button {
+    border: none;
+
+    background: #2563eb;
+    color: white;
+
+    padding: 0 14px;
+
+    border-radius: 0 7px 7px 0;
+
+    cursor: pointer;
+
+    font-size: 18px;
+}
+
+.add-button:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================
+   LISTA DE PALABRAS
+   ========================= */
+
+.word-list {
+    margin-top: 22px;
+}
+
+.word-list h3 {
+    margin: 0 0 8px;
+
+    font-size: 12px;
+
+    color: #6b7280;
+
+    font-weight: 500;
+
+    text-transform: uppercase;
+}
+
+.word-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 8px 0;
+
+    border-bottom: 1px solid #f0f0f0;
+
+    font-size: 13px;
+}
+
+.delete-button {
+    border: none;
+    background: transparent;
+
+    color: #ef4444;
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    padding: 0 4px;
+}
+
+.delete-button:hover {
+    color: #b91c1c;
+}
+
+
+/* =========================
+   CONTENEDOR DEL GRÁFICO
+   ========================= */
 
 .chart-container {
     flex: 1;
+
     background: white;
+
     border-radius: 12px;
-    padding: 25px 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+
+    padding: 22px 25px;
+
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+
     min-width: 0;
 }
 
-    .chart-container h2 {
-        margin-top: 0;
-        font-size: 20px;
-    }
+.chart-container h2 {
+    margin: 0;
+
+    font-size: 18px;
+}
+
+
+/* =========================
+   GRÁFICO
+   ========================= */
 
 .chart {
     position: relative;
-    height: calc(100vh - 200px);
-    min-height: 200px;
-    max-height: 500px;
 
-    margin: 25px 30px 15px 80px;
+    /*
+       El gráfico ahora es deliberadamente
+       bastante más bajo.
+    */
+
+    height: 330px;
+
+    margin-top: 30px;
+    margin-left: 65px;
+    margin-right: 20px;
+    margin-bottom: 0;
 
     border-left: 2px solid #374151;
     border-bottom: 2px solid #374151;
 
     background:
-        linear-gradient(to right, #f3f4f6 1px, transparent 1px),
-        linear-gradient(to bottom, #f3f4f6 1px, transparent 1px);
+        linear-gradient(
+            to right,
+            #f0f2f5 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            #f0f2f5 1px,
+            transparent 1px
+        );
 
     background-size: 10% 10%;
+
     overflow: hidden;
 }
 
-    /* Etiquetas de ejes */
 
-    .x-label {
-        text-align: center;
-        margin-top: 15px;
-        font-weight: 600;
-        font-size: 16px;
-    }
+/* =========================
+   NOMBRE EJE Y
+   ========================= */
 
-    .y-label {
+.y-label {
     position: absolute;
-    left: -50px;
+
+    left: -48px;
     top: 50%;
+
     transform: translateY(-50%) rotate(-90deg);
 
+    font-size: 14px;
     font-weight: 600;
-    font-size: 16px;
+
     white-space: nowrap;
+
+    color: #374151;
 }
 
-    /* Flechas */
 
-    .arrow-x {
-        position: absolute;
-        right: -9px;
-        bottom: -7px;
-        font-size: 20px;
+/* =========================
+   NOMBRE EJE X
+   ========================= */
+
+.x-label {
+    text-align: center;
+
+    margin-top: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #374151;
+}
+
+
+/* =========================
+   FLECHAS DE LOS EJES
+   ========================= */
+
+.arrow-y {
+    position: absolute;
+
+    left: -9px;
+    top: -13px;
+
+    font-size: 16px;
+}
+
+.arrow-x {
+    position: absolute;
+
+    right: -8px;
+    bottom: -8px;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   PALABRAS
+   ========================= */
+
+.word {
+    position: absolute;
+
+    padding: 9px 15px;
+
+    background: white;
+
+    border: 2px solid #2563eb;
+
+    border-radius: 8px;
+
+    color: #1e3a8a;
+
+    font-weight: 600;
+
+    font-size: 14px;
+
+    cursor: grab;
+
+    user-select: none;
+
+    box-shadow:
+        0 3px 8px rgba(37,99,235,0.15);
+
+    transform: translate(-50%, -50%);
+
+    transition:
+        box-shadow 0.15s,
+        transform 0.15s;
+}
+
+.word:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+
+    box-shadow:
+        0 5px 14px rgba(37,99,235,0.25);
+}
+
+.word:active {
+    cursor: grabbing;
+}
+
+
+/* =========================
+   INSTRUCCIONES
+   ========================= */
+
+.instructions {
+    margin-top: 12px;
+
+    text-align: center;
+
+    color: #9ca3af;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   PANTALLAS CHICAS
+   ========================= */
+
+@media (max-width: 800px) {
+
+    .container {
+        flex-direction: column;
+
+        padding: 20px;
     }
 
-    .arrow-y {
-        position: absolute;
-        left: -8px;
-        top: -14px;
-        font-size: 20px;
+    .sidebar {
+        width: 100%;
     }
 
-    /* PALABRAS */
-
-    .word {
-        position: absolute;
-        padding: 12px 20px;
-        background: white;
-        border: 2px solid #2563eb;
-        border-radius: 8px;
-        color: #1e3a8a;
-        font-weight: 600;
-        cursor: grab;
-        user-select: none;
-        box-shadow: 0 4px 10px rgba(37,99,235,0.15);
-        transition: box-shadow 0.2s, transform 0.2s;
+    .chart-container {
+        width: 100%;
     }
 
-    .word:hover {
-        transform: scale(1.05);
-        box-shadow: 0 6px 18px rgba(37,99,235,0.25);
+    .chart {
+        height: 300px;
+
+        margin-left: 55px;
+        margin-right: 10px;
     }
-
-    .word:active {
-        cursor: grabbing;
-    }
-
-    .instructions {
-        margin-top: 20px;
-        color: #6b7280;
-        font-size: 13px;
-        text-align: center;
-    }
-
-    @media (max-width: 900px) {
-
-        .container {
-            flex-direction: column;
-            padding: 20px;
-        }
-
-        .sidebar {
-            width: 100%;
-        }
-
-        .chart {
-            height: 500px;
-            margin-left: 60px;
-        }
-
-    }
+}
 
 </style>
 </head>
 
+
 <body>
 
+
+<!-- =========================
+     ENCABEZADO
+     ========================= -->
+
 <header>
+
     <h1>Espacio Semántico</h1>
-    <p>Ubicá las palabras según la relación que consideres que tienen con cada dimensión.</p>
+
+    <p>
+        Ubicá las palabras según su posición en las dimensiones de humanidad y tamaño.
+    </p>
+
 </header>
+
 
 
 <div class="container">
 
-    <!-- PANEL LATERAL -->
+
+    <!-- =========================
+         PANEL DE PALABRAS
+         ========================= -->
 
     <aside class="sidebar">
 
         <h2>Agregar palabras</h2>
 
         <p>
-            Escribí una nueva palabra y luego ubicala en el gráfico.
+            Escribí una palabra y agregala al espacio semántico.
         </p>
 
+
         <div class="input-group">
+
             <input
                 type="text"
                 id="newWord"
@@ -283,7 +452,13 @@
                 maxlength="30"
             >
 
-            <button onclick="addWord()">+</button>
+            <button
+                class="add-button"
+                onclick="addWord()"
+            >
+                +
+            </button>
+
         </div>
 
 
@@ -299,29 +474,46 @@
 
 
 
-    <!-- GRAFICO -->
+    <!-- =========================
+         GRÁFICO
+         ========================= -->
 
     <main class="chart-container">
 
         <h2>Mapa conceptual</h2>
 
+
         <div id="chart" class="chart">
 
-    <div class="y-label">Tamaño</div>
+            <!-- EJE Y -->
 
-    <div class="arrow-y">▲</div>
-    <div class="arrow-x">▶</div>
+            <div class="y-label">
+                Tamaño
+            </div>
 
-</div>
 
-            <div class="arrow-y">▲</div>
-            <div class="arrow-x">▶</div>
+            <!-- FLECHA EJE Y -->
+
+            <div class="arrow-y">
+                ▲
+            </div>
+
+
+            <!-- FLECHA EJE X -->
+
+            <div class="arrow-x">
+                ▶
+            </div>
 
         </div>
+
+
+        <!-- EJE X -->
 
         <div class="x-label">
             Humanidad
         </div>
+
 
         <div class="instructions">
             Arrastrá las palabras para ubicarlas dentro del espacio.
@@ -335,189 +527,261 @@
 
 <script>
 
-    const chart = document.getElementById("chart");
-    const wordList = document.getElementById("wordList");
-    const input = document.getElementById("newWord");
+/* =========================
+   DATOS INICIALES
+   ========================= */
 
-    let words = [
-        {
-            text: "Perro",
-            x: 30,
-            y: 65
-        },
-        {
-            text: "Gato",
-            x: 55,
-            y: 50
-        },
-        {
-            text: "Rey",
-            x: 75,
-            y: 25
-        }
-    ];
+const chart = document.getElementById("chart");
+
+const wordList = document.getElementById("wordList");
+
+const input = document.getElementById("newWord");
 
 
-    function renderWords() {
+let words = [
 
-        chart.querySelectorAll(".word").forEach(el => el.remove());
+    {
+        text: "Perro",
+        x: 30,
+        y: 65
+    },
 
-        wordList.innerHTML = "";
+    {
+        text: "Gato",
+        x: 55,
+        y: 50
+    },
 
-
-        words.forEach((word, index) => {
-
-            const element = document.createElement("div");
-
-            element.className = "word";
-
-            element.textContent = word.text;
-
-            element.style.left = word.x + "%";
-            element.style.top = word.y + "%";
-
-            element.style.transform = "translate(-50%, -50%)";
-
-            makeDraggable(element, index);
-
-            chart.appendChild(element);
-
-
-            const listItem = document.createElement("div");
-
-            listItem.className = "word-item";
-
-            listItem.innerHTML = `
-                <span>${word.text}</span>
-
-                <button
-                    class="delete-btn"
-                    onclick="deleteWord(${index})"
-                >
-                    ×
-                </button>
-            `;
-
-            wordList.appendChild(listItem);
-
-        });
-
+    {
+        text: "Rey",
+        x: 75,
+        y: 25
     }
 
+];
 
 
-    function makeDraggable(element, index) {
+/* =========================
+   DIBUJAR PALABRAS
+   ========================= */
 
-        let isDragging = false;
+function renderWords() {
 
-
-        element.addEventListener("mousedown", function(e) {
-
-            isDragging = true;
-
-            document.body.style.userSelect = "none";
-
-        });
+    chart
+        .querySelectorAll(".word")
+        .forEach(element => element.remove());
 
 
-        document.addEventListener("mousemove", function(e) {
-
-            if (!isDragging) return;
+    wordList.innerHTML = "";
 
 
-            const rect = chart.getBoundingClientRect();
+    words.forEach((word, index) => {
 
 
-            let x = e.clientX - rect.left;
+        /* PALABRA EN EL GRÁFICO */
 
-            let y = e.clientY - rect.top;
+        const element = document.createElement("div");
 
+        element.className = "word";
 
-            x = Math.max(0, Math.min(x, rect.width));
-
-            y = Math.max(0, Math.min(y, rect.height));
-
-
-            const xPercent = (x / rect.width) * 100;
-
-            const yPercent = (y / rect.height) * 100;
+        element.textContent = word.text;
 
 
-            words[index].x = xPercent;
+        element.style.left = word.x + "%";
 
-            words[index].y = yPercent;
-
-
-            element.style.left = xPercent + "%";
-
-            element.style.top = yPercent + "%";
-
-        });
+        element.style.top = word.y + "%";
 
 
-        document.addEventListener("mouseup", function() {
+        makeDraggable(element, index);
 
-            if (isDragging) {
 
-                isDragging = false;
-
-                document.body.style.userSelect = "";
-
-            }
-
-        });
-
-    }
+        chart.appendChild(element);
 
 
 
-    function addWord() {
+        /* PALABRA EN LA LISTA */
 
-        const text = input.value.trim();
+        const listItem = document.createElement("div");
 
-
-        if (text === "") return;
-
-
-        words.push({
-            text: text,
-            x: 50,
-            y: 50
-        });
+        listItem.className = "word-item";
 
 
-        input.value = "";
+        const name = document.createElement("span");
+
+        name.textContent = word.text;
 
 
-        renderWords();
+        const deleteButton = document.createElement("button");
 
-    }
+        deleteButton.className = "delete-button";
 
-
-
-    function deleteWord(index) {
-
-        words.splice(index, 1);
-
-        renderWords();
-
-    }
+        deleteButton.textContent = "×";
 
 
+        deleteButton.onclick = function() {
 
-    input.addEventListener("keypress", function(e) {
+            deleteWord(index);
 
-        if (e.key === "Enter") {
+        };
+
+
+        listItem.appendChild(name);
+
+        listItem.appendChild(deleteButton);
+
+
+        wordList.appendChild(listItem);
+
+    });
+
+}
+
+
+/* =========================
+   ARRASTRAR PALABRAS
+   ========================= */
+
+function makeDraggable(element, index) {
+
+    let dragging = false;
+
+
+    element.addEventListener("mousedown", function() {
+
+        dragging = true;
+
+        document.body.style.userSelect = "none";
+
+    });
+
+
+    document.addEventListener("mousemove", function(event) {
+
+        if (!dragging) return;
+
+
+        const rect = chart.getBoundingClientRect();
+
+
+        let x =
+            event.clientX - rect.left;
+
+
+        let y =
+            event.clientY - rect.top;
+
+
+        /*
+           Evitamos que la palabra
+           salga del gráfico.
+        */
+
+        x = Math.max(0, Math.min(x, rect.width));
+
+        y = Math.max(0, Math.min(y, rect.height));
+
+
+        const xPercent =
+            (x / rect.width) * 100;
+
+
+        const yPercent =
+            (y / rect.height) * 100;
+
+
+        words[index].x = xPercent;
+
+        words[index].y = yPercent;
+
+
+        element.style.left =
+            xPercent + "%";
+
+        element.style.top =
+            yPercent + "%";
+
+    });
+
+
+    document.addEventListener("mouseup", function() {
+
+        dragging = false;
+
+        document.body.style.userSelect = "";
+
+    });
+
+}
+
+
+/* =========================
+   AGREGAR PALABRA
+   ========================= */
+
+function addWord() {
+
+    const text =
+        input.value.trim();
+
+
+    if (text === "") return;
+
+
+    words.push({
+
+        text: text,
+
+        x: 50,
+
+        y: 50
+
+    });
+
+
+    input.value = "";
+
+
+    renderWords();
+
+}
+
+
+/* =========================
+   ELIMINAR PALABRA
+   ========================= */
+
+function deleteWord(index) {
+
+    words.splice(index, 1);
+
+    renderWords();
+
+}
+
+
+/* =========================
+   ENTER PARA AGREGAR
+   ========================= */
+
+input.addEventListener(
+    "keypress",
+    function(event) {
+
+        if (event.key === "Enter") {
 
             addWord();
 
         }
 
-    });
+    }
+);
 
 
+/* =========================
+   INICIO
+   ========================= */
 
-    renderWords();
+renderWords();
 
 </script>
 
