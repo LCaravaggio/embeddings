@@ -149,9 +149,9 @@
 
 .chart {
     position: relative;
-    height: calc(100vh - 230px);
-    min-height: 350px;
-    max-height: 600px;
+    height: calc(100vh - 300px);
+    min-height: 300px;
+    max-height: 500px;
 
     margin: 25px 30px 15px 80px;
 
@@ -176,14 +176,15 @@
     }
 
     .y-label {
-        position: absolute;
-        left: 25px;
-        top: 50%;
-        transform: rotate(-90deg) translateY(-50%);
-        transform-origin: left top;
-        font-weight: 600;
-        font-size: 16px;
-    }
+    position: absolute;
+    left: -55px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+
+    font-weight: 600;
+    font-size: 16px;
+    white-space: nowrap;
+}
 
     /* Flechas */
 
@@ -304,9 +305,14 @@
 
         <h2>Mapa conceptual</h2>
 
-        <div class="y-label">Tamaño</div>
-
         <div id="chart" class="chart">
+
+    <div class="y-label">Tamaño</div>
+
+    <div class="arrow-y">▲</div>
+    <div class="arrow-x">▶</div>
+
+</div>
 
             <div class="arrow-y">▲</div>
             <div class="arrow-x">▶</div>
